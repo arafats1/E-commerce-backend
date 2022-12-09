@@ -1,0 +1,270 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  images    Image[]
+  items     Item[]
+}
+
+model Image {
+  id                      Int                    @id @default(autoincrement())
+  url                     String
+  resolution              String
+  type                    String
+  createdAt               DateTime               @default(now())
+  updatedAt               DateTime               @default(now())
+  itemId                  Int?
+  item                    Item?                  @relation(fields: [itemId], references: [id])
+  categoryId              Int?
+  category                Category?              @relation(fields: [categoryId], references: [id])
+  bizInfoId               Int?
+  bizInfo                 BizInfo?               @relation(fields: [bizInfoId], references: [id])
+  brands                  Brand[]
+  carousel                Carousel?              @relation(fields: [carouselId], references: [id])
+  carouselId              Int?
+  identificationDetailsId Int?
+  identificationDetails   IdentificationDetails? @relation(fields: [identificationDetailsId], references: [id])
+}
+
+model Item {
+  id           Int       @id @default(autoincrement())
+  name         String
+  popular      Boolean   @default(false)
+  dailyDeals   Boolean   @default(false)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @default(now())
+  categoryName String
+  brandName    String?
+  brand        Brand?    @relation(fields: [brandName], references: [name])
+  category     Category  @relation(fields: [categoryName], references: [name])
+  images       Image[]
+  product      Product[]
+  service      Service[]
+  property     Property[]
+}
+
+model Product {
+  id               Int            @id @default(autoincrement())
+  items            Item[]
+  productListing   ProductListing[]
+}
+
+model Service {
+  id               Int            @id @default(autoincrement())
+  type             String
+  serviceListingId Int?
+  serviceListing   ServiceListing? @relation(fields: [serviceListingId], references: [id])
+  items            Item[]
+}
+
+model Property {
+  id                Int             @id @default(autoincrement())
+  propertyListingId Int?
+  propertyListing   PropertyListing? @relation(fields: [propertyListingId], references: [id])
+  type              String
+  location          String
+  items             Item[]
+}
+
+model PropertyListing {
+  id         Int        @id @default(autoincrement())
+  size       String
+  price      Float
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @default(now())
+  listingId  Int?
+  listing    Listing?    @relation(fields: [listingId], references: [id])
+  properties Property[]
+  currencies Currency[]
+}
+
+model ServiceListing {
+  id         Int        @id @default(autoincrement())
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @default(now())
+  listingId  Int?
+  price      Float
+  listing    Listing?    @relation(fields: [listingId], references: [id])
+  services   Service[]
+  currencies Currency[]
+}
+
+model ProductListing {
+  id         Int        @id @default(autoincrement())
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @default(now())
+  color      String
+  size       String
+  quantity   Int
+  price      Float
+  products   Product[]
+  currencies Currency[]
+  listingId  Int?
+  listing    Listing?    @relation(fields: [listingId], references: [id])
+}
+
+model Currency {
+  id                Int              @id @default(autoincrement())
+  currencyName      String
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @default(now())
+  productListingId  Int?
+  productListing    ProductListing?  @relation(fields: [productListingId], references: [id])
+  serviceListingId  Int?
+  serviceListing    ServiceListing?  @relation(fields: [serviceListingId], references: [id])
+  propertyListingId Int?
+  propertyListing   PropertyListing? @relation(fields: [propertyListingId], references: [id])
+}
+
+model Listing {
+  id              Int               @id @default(autoincrement())
+  description     String
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @default(now())
+  productListing  ProductListing[]
+  serviceListing  ServiceListing[]
+  propertyListing PropertyListing[]
+  bizInfoId       Int
+  bizInfo         BizInfo           @relation(fields: [bizInfoId], references: [id])
+}
+
+model User {
+  id                    Int                     @id @default(autoincrement())
+  firstName             String
+  lastName              String
+  dateOfBirth           String
+  nationality           String
+  areaOfResidence       String
+  createdAt             DateTime                @default(now())
+  updatedAt             DateTime                @default(now())
+  sellers               Seller[]
+  physicalAddress       PhysicalAddress[]
+  identificationDetails IdentificationDetails[]
+  signUpId              Int
+  signUp                SignUp                  @relation(fields: [signUpId], references: [id])
+}
+
+model IdentificationDetails {
+  id        Int      @id @default(autoincrement())
+  idType    String
+  images    Image[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model SignUp {
+  id        Int      @id @default(autoincrement())
+  email     String?  @unique
+  phone     String?  @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  sellers   Seller[]
+  kyc       User[]
+}
+
+model Seller {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  userId    Int?
+  user      User?    @relation(fields: [userId], references: [id])
+  signUpId  Int
+  signUp    SignUp   @relation(fields: [signUpId], references: [id])
+  bizInfoId Int
+  bizInfo   BizInfo  @relation(fields: [bizInfoId], references: [id])
+}
+
+model BizInfo {
+  id              Int               @id @default(autoincrement())
+  businessName    String
+  typeOfBusiness  String
+  referredBy      String
+  taxID           String
+  registrationNo  String
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @default(now())
+  images          Image[]
+  physicalAddress PhysicalAddress[]
+  paymentDetails  PaymentDetail[]
+  seller          Seller[]
+  listings        Listing[]
+}
+
+model PhysicalAddress {
+  id         Int      @id @default(autoincrement())
+  country    String
+  city       String
+  postalCode String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+  bizInfoId  Int?
+  bizInfo    BizInfo? @relation(fields: [bizInfoId], references: [id])
+  userId     Int?
+  user       User?    @relation(fields: [userId], references: [id])
+}
+
+model PaymentDetail {
+  id                     Int                     @id @default(autoincrement())
+  createdAt              DateTime                @default(now())
+  updatedAt              DateTime                @default(now())
+  bizInfoId              Int
+  bizInfo                BizInfo                 @relation(fields: [bizInfoId], references: [id])
+  bankAccounts           BankAccount[]
+  mobileMoneyAccounts    MobileMoneyAccount[]
+  cryptoCurrencyAccounts CryptoCurrencyAccount[]
+}
+
+model BankAccount {
+  id              Int            @id @default(autoincrement())
+  accountName     String
+  accountNumber   String
+  swiftCode       String
+  bankName        String
+  paymentDetailId Int?
+  paymentDetail   PaymentDetail? @relation(fields: [paymentDetailId], references: [id])
+}
+
+model MobileMoneyAccount {
+  id              Int            @id @default(autoincrement())
+  name            String
+  number          String
+  paymentDetailId Int?
+  paymentDetail   PaymentDetail? @relation(fields: [paymentDetailId], references: [id])
+}
+
+model CryptoCurrencyAccount {
+  id              Int            @id @default(autoincrement())
+  walletAddress   String
+  accountId       String
+  paymentDetailId Int?
+  paymentDetail   PaymentDetail? @relation(fields: [paymentDetailId], references: [id])
+}
+
+model Brand {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  images    Image[]
+  items     Item[]
+}
+
+model Carousel {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  image     Image[]
+}
