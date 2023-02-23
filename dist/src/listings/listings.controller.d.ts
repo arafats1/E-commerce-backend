@@ -3,7 +3,7 @@ import { UpdateListingDto } from './dto/update-listing.dto';
 export declare class ListingsController {
     private readonly listingsService;
     constructor(listingsService: ListingsService);
-    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Listing & {
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<(import(".prisma/client").Listing & {
         productListing: {
             color: string;
             size: string;

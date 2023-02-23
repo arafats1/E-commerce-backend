@@ -11,14 +11,14 @@ export declare class BrandsService {
     uploadImageToCloudinary(file: Express.Multer.File): Promise<import(".prisma/client").Image>;
     create(createBrandDto: CreateBrandDto): import(".prisma/client").Prisma.Prisma__BrandClient<import(".prisma/client").Brand, never>;
     createItem(name: string, createItemDto: CreateItemDto): import(".prisma/client").Prisma.Prisma__ItemClient<import(".prisma/client").Item, never>;
-    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Brand & {
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<(import(".prisma/client").Brand & {
         images: {
             url: string;
             resolution: string;
             type: string;
         }[];
     })[]>;
-    findItems(name: string): import(".prisma/client").PrismaPromise<(import(".prisma/client").Brand & {
+    findItems(name: string): import(".prisma/client").Prisma.PrismaPromise<(import(".prisma/client").Brand & {
         items: {
             name: string;
             product: {

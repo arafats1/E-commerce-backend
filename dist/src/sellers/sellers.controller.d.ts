@@ -3,7 +3,7 @@ import { UpdateSellerDto } from './dto/update-seller.dto';
 export declare class SellersController {
     private readonly sellersService;
     constructor(sellersService: SellersService);
-    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Seller & {
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<(import(".prisma/client").Seller & {
         bizInfo: {
             businessName: string;
             typeOfBusiness: string;

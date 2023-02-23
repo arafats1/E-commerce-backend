@@ -5,7 +5,7 @@ export declare class ItemsController {
     private readonly itemsService;
     constructor(itemsService: ItemsService);
     create(createItemDto: CreateItemDto): import(".prisma/client").Prisma.Prisma__ItemClient<import(".prisma/client").Item, never>;
-    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Item & {
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<(import(".prisma/client").Item & {
         images: {
             url: string;
             resolution: string;
@@ -47,7 +47,7 @@ export declare class ItemsController {
             type: string;
         }[];
     }, never>;
-    findPopular(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Item & {
+    findPopular(): import(".prisma/client").Prisma.PrismaPromise<(import(".prisma/client").Item & {
         images: {
             url: string;
             resolution: string;
@@ -117,7 +117,7 @@ export declare class ItemsController {
             };
         }[];
     }, never>;
-    findDailyDeals(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Item & {
+    findDailyDeals(): import(".prisma/client").Prisma.PrismaPromise<(import(".prisma/client").Item & {
         images: {
             url: string;
             resolution: string;

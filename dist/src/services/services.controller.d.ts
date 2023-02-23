@@ -3,7 +3,7 @@ import { UpdateServiceDto } from './dto/update-service.dto';
 export declare class ServicesController {
     private readonly servicesService;
     constructor(servicesService: ServicesService);
-    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Service & {
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<(import(".prisma/client").Service & {
         serviceListing: {
             price: number;
             currencies: {

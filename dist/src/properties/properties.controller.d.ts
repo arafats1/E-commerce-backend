@@ -3,7 +3,7 @@ import { UpdatePropertyDto } from './dto/update-property.dto';
 export declare class PropertiesController {
     private readonly propertiesService;
     constructor(propertiesService: PropertiesService);
-    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Property & {
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<(import(".prisma/client").Property & {
         propertyListing: {
             size: string;
             price: number;

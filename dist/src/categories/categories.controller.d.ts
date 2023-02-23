@@ -7,7 +7,7 @@ export declare class CategoriesController {
     constructor(categoriesService: CategoriesService);
     create(createCategoryDto: CreateCategoryDto): import(".prisma/client").Prisma.Prisma__CategoryClient<import(".prisma/client").Category, never>;
     createItem(name: string, createItemDto: CreateItemDto): import(".prisma/client").Prisma.Prisma__ItemClient<import(".prisma/client").Item, never>;
-    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Category & {
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<(import(".prisma/client").Category & {
         images: {
             url: string;
             resolution: string;
@@ -21,7 +21,7 @@ export declare class CategoriesController {
             type: string;
         }[];
     }, never>;
-    findItems(name: string): import(".prisma/client").PrismaPromise<(import(".prisma/client").Category & {
+    findItems(name: string): import(".prisma/client").Prisma.PrismaPromise<(import(".prisma/client").Category & {
         items: {
             name: string;
         }[];

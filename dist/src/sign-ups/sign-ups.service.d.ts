@@ -6,7 +6,7 @@ export declare class SignUpsService {
     private prisma;
     constructor(prisma: PrismaService);
     create(createSignUpDto: CreateSignUpDto): import(".prisma/client").Prisma.Prisma__SignUpClient<import(".prisma/client").SignUp, never>;
-    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").SignUp & {
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<(import(".prisma/client").SignUp & {
         kyc: (import(".prisma/client").User & {
             identificationDetails: {
                 images: {

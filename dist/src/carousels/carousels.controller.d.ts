@@ -5,7 +5,7 @@ export declare class CarouselsController {
     private readonly carouselsService;
     constructor(carouselsService: CarouselsService);
     create(createCarouselDto: CreateCarouselDto): import(".prisma/client").Prisma.Prisma__CarouselClient<import(".prisma/client").Carousel, never>;
-    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Carousel & {
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<(import(".prisma/client").Carousel & {
         image: {
             url: string;
             resolution: string;

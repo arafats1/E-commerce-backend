@@ -8,7 +8,7 @@ export declare class BrandsController {
     constructor(brandsService: BrandsService);
     uploadImage(file: Express.Multer.File): Promise<import(".prisma/client").Image>;
     create(createBrandDto: CreateBrandDto): import(".prisma/client").Prisma.Prisma__BrandClient<import(".prisma/client").Brand, never>;
-    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Brand & {
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<(import(".prisma/client").Brand & {
         images: {
             url: string;
             resolution: string;
@@ -24,7 +24,7 @@ export declare class BrandsController {
         }[];
     }>;
     update(id: string, updateBrandDto: UpdateBrandDto): import(".prisma/client").Prisma.Prisma__BrandClient<import(".prisma/client").Brand, never>;
-    findItems(name: string): import(".prisma/client").PrismaPromise<(import(".prisma/client").Brand & {
+    findItems(name: string): import(".prisma/client").Prisma.PrismaPromise<(import(".prisma/client").Brand & {
         items: {
             name: string;
             product: {

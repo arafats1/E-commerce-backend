@@ -5,7 +5,7 @@ export declare class SellersService {
     private prisma;
     constructor(prisma: PrismaService);
     create(createSellerDto: CreateSellerDto): string;
-    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Seller & {
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<(import(".prisma/client").Seller & {
         bizInfo: {
             businessName: string;
             typeOfBusiness: string;

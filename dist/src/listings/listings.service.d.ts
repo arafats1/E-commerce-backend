@@ -5,7 +5,7 @@ export declare class ListingsService {
     private prisma;
     constructor(prisma: PrismaService);
     create(createListingDto: CreateListingDto): void;
-    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Listing & {
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<(import(".prisma/client").Listing & {
         productListing: {
             color: string;
             size: string;

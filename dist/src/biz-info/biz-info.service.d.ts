@@ -7,7 +7,7 @@ export declare class BizInfoService {
     constructor(prisma: PrismaService);
     create(createBizInfoDto: CreateBizInfoDto): import(".prisma/client").Prisma.Prisma__BizInfoClient<import(".prisma/client").BizInfo, never>;
     createListing(id: number, createListingDto: CreateListingDto): import(".prisma/client").Prisma.Prisma__ListingClient<import(".prisma/client").Listing, never>;
-    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").BizInfo & {
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<(import(".prisma/client").BizInfo & {
         images: {
             url: string;
             resolution: string;

@@ -5,7 +5,7 @@ export declare class ServicesService {
     private prisma;
     constructor(prisma: PrismaService);
     create(createServiceDto: CreateServiceDto): void;
-    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Service & {
+    findAll(): import(".prisma/client").Prisma.PrismaPromise<(import(".prisma/client").Service & {
         serviceListing: {
             price: number;
             currencies: {
