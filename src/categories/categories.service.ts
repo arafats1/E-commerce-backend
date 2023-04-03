@@ -49,9 +49,7 @@ export class CategoriesService {
 
   // findOne(id: number) {
   //   // return `This action returns a #${id} category`;
-  //   return this.prisma.category.findUnique({ where: {id}, include: {images:{select:{url:true, resolution:true, type:true}}}}).then((category) => {
-  //     if (!category) {
-  //       throw new PostNotFoundException(id);
+ 
  
 
   findItems(name: string) {
