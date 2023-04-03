@@ -8,8 +8,6 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { CreateItemDto } from 'src/items/dto/create-item.dto';
 
 
-
-
 @Controller('brands')
 @ApiTags('brands')
 export class BrandsController {
