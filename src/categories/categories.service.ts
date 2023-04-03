@@ -47,10 +47,6 @@ export class CategoriesService {
     return this.prisma.category.findMany({include:{images:{select:{url:true, resolution:true, type:true}}}});
   }
 
-  // findOne(id: number) {
-  //   // return `This action returns a #${id} category`;
- 
- 
 
   findItems(name: string) {
     return this.prisma.category.findMany({ where:{name: name}, include: {items: {select:{name:true,}}}});
