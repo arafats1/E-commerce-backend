@@ -52,10 +52,7 @@ export class CategoriesService {
   //   return this.prisma.category.findUnique({ where: {id}, include: {images:{select:{url:true, resolution:true, type:true}}}}).then((category) => {
   //     if (!category) {
   //       throw new PostNotFoundException(id);
-  //     }
-  //     return category;
-  //   });
-  // }
+ 
 
   findItems(name: string) {
     return this.prisma.category.findMany({ where:{name: name}, include: {items: {select:{name:true,}}}});
