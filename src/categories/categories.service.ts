@@ -10,7 +10,7 @@ export class CategoriesService {
   constructor(private prisma: PrismaService){}
 
   create(createCategoryDto: CreateCategoryDto) {
-    // return 'This action adds a new category';
+ 
     return this.prisma.category.create({
       data: {
         name: createCategoryDto.name,
