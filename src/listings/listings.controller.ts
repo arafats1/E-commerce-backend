@@ -15,7 +15,7 @@ export class ListingsController {
   // @Post()
   // create(@Body() createListingDto: CreateListingDto) {
   //   return this.listingsService.create(createListingDto);
-  // }
+ 
 
   @Get()
   @ApiOperation({ summary: 'Get all listings' })
