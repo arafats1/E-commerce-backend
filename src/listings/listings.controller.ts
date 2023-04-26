@@ -10,11 +10,6 @@ import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiParam } from '@nestjs/s
 
 export class ListingsController {
   constructor(private readonly listingsService: ListingsService) {}
-    
-
-  // @Post()
-
- 
 
   @Get()
   @ApiOperation({ summary: 'Get all listings' })
